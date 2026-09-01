@@ -164,8 +164,12 @@ main{position:relative;z-index:5}
 @keyframes scrollLine{50%{transform:scaleY(1.15);transform-origin:top;opacity:.9}}
 
 .ticker{position:relative;z-index:8;border-block:1px solid var(--line);background:rgba(125,56,255,.035);overflow:hidden;white-space:nowrap;transform:translateY(-70px)}
-.track{display:flex;gap:46px;width:max-content;padding:14px 0;color:#c9b5e3;font-size:18px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;animation:marquee 32s linear infinite}
-.track strong{color:var(--orange2)}@keyframes marquee{to{transform:translateX(-50%)}}
+.track{display:flex;align-items:center;width:max-content;padding:14px 0;color:#c9b5e3;font-size:18px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;will-change:transform}
+.track-group{display:flex;align-items:center;flex-shrink:0;gap:28px;padding-right:28px}
+.track strong{color:#ffd21a}
+.marqueeItem{display:inline-flex;align-items:center;white-space:nowrap}
+.marqueeSep{display:inline-flex;align-items:center;justify-content:center;color:var(--orange2);font-size:20px;filter:drop-shadow(0 0 14px rgba(255,121,0,.35));}
+
 
 section{padding:72px 20px}
 .wrap{width:min(1040px,100%);margin:auto}
@@ -187,12 +191,38 @@ section{padding:72px 20px}
 @keyframes logoPulse{50%{scale:1.035;filter:drop-shadow(0 0 65px rgba(255,121,0,.65))}}
 .quote{margin:22px 0;padding:21px 22px;border-left:2px solid var(--orange);background:linear-gradient(90deg,rgba(255,121,0,.055),transparent);color:#e6dce7;line-height:1.75;font-size:14px}
 .quote strong{color:#ffaf42}
+
+.roadmapGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.roadmapCard{padding:22px 20px;border-radius:18px;position:relative;overflow:hidden}
+.roadmapCard:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--orange),rgba(255,121,0,.08));box-shadow:0 0 16px rgba(255,121,0,.28)}
+.roadmapCard .kicker{font-size:9px}
+.roadmapCard .roadmapTitle{font-family:Bangers,Impact,sans-serif;font-size:30px;line-height:1.05;letter-spacing:.04em}
+.roadmapCard .copy{margin-top:10px}
+@media(max-width:800px){
+  #roadmap{padding:62px 16px 0!important}
+  #roadmap .title{font-size:48px;margin-bottom:22px}
+  .roadmapGrid{grid-template-columns:1fr;gap:14px;position:relative;padding-left:13px}
+  .roadmapGrid:before{content:"";position:absolute;left:2px;top:10px;bottom:10px;width:1px;background:linear-gradient(180deg,rgba(255,121,0,.65),rgba(120,48,253,.22),rgba(255,121,0,.1))}
+  .roadmapCard{padding:18px 17px 18px 19px;border-radius:16px;background:linear-gradient(145deg,rgba(255,121,0,.045),rgba(255,255,255,.018));box-shadow:0 12px 28px rgba(0,0,0,.18)}
+  .roadmapCard:before{left:2px;top:22px;bottom:auto;width:9px;height:9px;border-radius:50%;transform:translateX(-50%);background:var(--orange);box-shadow:0 0 0 4px rgba(255,121,0,.08),0 0 15px rgba(255,121,0,.8)}
+  .roadmapCard .roadmapTitle{font-size:24px;line-height:1.08}
+  .roadmapCard .copy{font-size:13px;line-height:1.65;margin-top:9px}
+}
+
 .features{display:grid;gap:10px;margin-top:18px}
 .feature{display:grid;grid-template-columns:40px 1fr;gap:12px;padding:14px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.02);transition:.22s}
 .feature:hover{transform:translateX(6px);border-color:rgba(255,121,0,.28);background:rgba(255,121,0,.035)}
-.featureIcon{width:40px;height:40px;border-radius:12px;background:rgba(125,56,255,.08);border:1px solid rgba(185,135,255,.13);display:grid;place-items:center;color:var(--orange2);font-size:17px;font-family:Georgia,serif}
+.featureIcon{width:40px;height:40px;border-radius:12px;background:radial-gradient(circle,rgba(255,121,0,.32) 0 22%,rgba(255,121,0,.08) 23% 48%,transparent 49%),rgba(255,121,0,.035);border:1px solid rgba(255,121,0,.28);display:grid;place-items:center;position:relative;box-shadow:0 0 18px rgba(255,121,0,.12);animation:halloweenPulse 2.2s ease-in-out infinite}
+.featureIcon:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px rgba(255,121,0,.85);animation:halloweenDot 1.35s ease-in-out infinite}
+.featureIcon:after{content:"";position:absolute;inset:7px;border:1px solid rgba(255,121,0,.28);border-radius:50%;animation:halloweenRing 2.6s linear infinite}
+.feature:nth-child(2) .featureIcon{animation-delay:.35s}
+.feature:nth-child(3) .featureIcon{animation-delay:.7s}
+@keyframes halloweenPulse{50%{box-shadow:0 0 28px rgba(255,121,0,.28);border-color:rgba(255,121,0,.48)}}
+@keyframes halloweenDot{50%{scale:1.35;filter:brightness(1.25)}}
+@keyframes halloweenRing{to{transform:rotate(360deg);opacity:.45}}
 .feature strong{display:block;font-size:12px;font-weight:800;letter-spacing:.02em}
 .feature span{display:block;margin-top:3px;color:#918697;font-size:12px;line-height:1.5}
+.thesisHeading{margin:24px 0 8px;color:var(--orange2);font-family:Bangers,Impact,sans-serif;font-size:29px;letter-spacing:.04em}
 
 .secondaryCountdown{margin-top:32px;padding:24px;text-align:center;border:1px solid rgba(255,121,0,.22);border-radius:20px;background:radial-gradient(circle at 50% 0,rgba(255,121,0,.1),transparent 65%),rgba(14,9,18,.72)}
 .secondaryCountdown .label{font-size:9px;color:#9f929f;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
@@ -351,6 +381,179 @@ body{background:#030104}
   .footerSocial.x{font-size:25px}.footerSocial.telegram svg{width:20px;height:20px}.footerSocial.pump img{width:20px;height:28px}
   .footerBottom{padding-top:22px;line-height:1.75}.footerBottom .disclaimer{max-width:900px}.footerBottom .copyright{margin-top:8px}
 }
+
+/* ===== HALLOWEEN FAQ ===== */
+#faqSection{
+  position:relative;
+  padding:88px 20px 110px;
+  overflow:hidden;
+}
+#faqSection::before{
+  content:"";
+  position:absolute;
+  width:520px;height:520px;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(125,56,255,.10),transparent 68%);
+  pointer-events:none;
+}
+.faqWrap{
+  width:min(980px,100%);
+  margin:0 auto;
+  position:relative;
+  z-index:2;
+}
+.faqHeader{
+  text-align:center;
+  margin-bottom:34px;
+}
+.faqHeader .kicker{
+  color:var(--orange);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.faqHeader .title{
+  margin:0;
+  font-family:Bangers,Impact,sans-serif;
+  font-size:clamp(54px,8vw,88px);
+  line-height:.9;
+  letter-spacing:.04em;
+  color:var(--cream);
+  text-shadow:0 0 24px rgba(255,121,0,.16);
+}
+.faqHeader .faqRule{
+  width:74px;height:4px;
+  margin:18px auto 0;
+  border-radius:99px;
+  background:linear-gradient(90deg,var(--orange),var(--purple));
+  box-shadow:0 0 18px rgba(255,121,0,.25);
+}
+.faqList{
+  display:grid;
+  gap:13px;
+}
+.faqItem{
+  border:1px solid rgba(255,121,0,.22);
+  border-radius:13px;
+  overflow:hidden;
+  background:linear-gradient(135deg,rgba(19,10,22,.88),rgba(12,7,16,.78));
+  box-shadow:0 14px 34px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.025);
+  transition:border-color .28s ease,box-shadow .28s ease,transform .28s ease;
+}
+.faqItem:hover{
+  border-color:rgba(255,121,0,.42);
+  box-shadow:0 16px 40px rgba(0,0,0,.28),0 0 24px rgba(125,56,255,.06);
+  transform:translateY(-1px);
+}
+.faqQuestion{
+  width:100%;
+  min-height:76px;
+  padding:19px 22px 19px 25px;
+  border:0;
+  background:transparent;
+  color:#ffffff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  text-align:left;
+  cursor:pointer;
+  font-family:Bangers,Impact,sans-serif;
+  font-size:24px;
+  font-weight:400;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.faqQuestion > span:first-child{
+  font-family:Bangers,Impact,sans-serif;
+  font-size:26px;
+  line-height:1;
+  letter-spacing:.04em;
+  color:#ffffff;
+}
+.faqQuestion:focus-visible{
+  outline:2px solid var(--orange);
+  outline-offset:-3px;
+}
+.faqPlus{
+  position:relative;
+  width:30px;height:30px;
+  flex:0 0 30px;
+  border:1px solid rgba(255,121,0,.32);
+  border-radius:50%;
+  background:rgba(255,121,0,.07);
+  box-shadow:0 0 16px rgba(255,121,0,.08);
+  transition:transform .42s cubic-bezier(.22,1,.36,1),background .25s ease,border-color .25s ease;
+}
+.faqPlus::before,.faqPlus::after{
+  content:"";
+  position:absolute;
+  left:50%;top:50%;
+  width:11px;height:2px;
+  border-radius:2px;
+  background:var(--orange2);
+  transform:translate(-50%,-50%);
+}
+.faqPlus::after{
+  transform:translate(-50%,-50%) rotate(90deg);
+  transition:transform .38s cubic-bezier(.22,1,.36,1);
+}
+.faqItem.open .faqPlus{
+  transform:rotate(180deg);
+  background:rgba(125,56,255,.14);
+  border-color:rgba(185,135,255,.48);
+}
+.faqItem.open .faqPlus::after{
+  transform:translate(-50%,-50%) rotate(0deg);
+}
+.faqAnswer{
+  display:grid;
+  grid-template-rows:0fr;
+  opacity:0;
+  transform:translateY(-5px);
+  transition:
+    grid-template-rows .52s cubic-bezier(.22,1,.36,1),
+    opacity .24s ease,
+    transform .38s ease;
+}
+.faqAnswerInner{
+  min-height:0;
+  overflow:hidden;
+  padding:0 25px;
+}
+.faqAnswer p{
+  margin:0;
+  padding:0;
+  color:var(--muted);
+  font-family:Inter,Helvetica,Arial,sans-serif;
+  font-size:17px;
+  line-height:1.8;
+  letter-spacing:0;
+  max-width:820px;
+}
+.faqItem.open .faqAnswer{
+  grid-template-rows:1fr;
+  opacity:1;
+  transform:translateY(0);
+  transition-delay:.10s,.16s,.16s;
+}
+.faqItem.open .faqAnswerInner{
+  padding-bottom:23px;
+}
+@media(max-width:700px){
+  #faqSection{padding:70px 16px 84px}
+  .faqQuestion{min-height:70px;padding:17px 17px 17px 19px;font-size:14px}
+  .faqAnswerInner{padding:0 19px}
+  .faqItem.open .faqAnswerInner{padding-bottom:20px}
+  .faqPlus{width:28px;height:28px;flex-basis:28px}
+}
+@media(prefers-reduced-motion:reduce){
+  .faqItem,.faqPlus,.faqPlus::after,.faqAnswer{transition-duration:.01ms!important;transition-delay:0ms!important}
+}
+
 </style>
 <style id="user-css-overrides">:root{--pumpkin-orange:#ff7900;--pumpkin-purple:#7830fd;--pumpkin-bg:#030104}
 .hero h1{font-size:calc(clamp(58px,10.8vw,142px) * 0.94)}
@@ -446,7 +649,6 @@ body{background:#030104}
   <div class="links">
     <a href="#thesis">STORY</a>
     <a href="#roadmap">ROADMAP</a>
-    <a href="#community">LINKS</a>
     <a href="#chart">CHART</a>
     <a href="#faq">FAQ</a>
   </div>
@@ -455,8 +657,8 @@ body{background:#030104}
     <span>TIMER</span>
     <span class="timerValue"><b id="navD">--</b>D : <b id="navH">--</b>H : <b id="navM">--</b>M : <b id="navS">--</b>S</span>
   </div>
-  <a class="navX" href="https://x.com/VFXILYASS" target="_blank" rel="noopener" aria-label="Join the $PUMPKIN community on X"><span class="xMark">𝕏</span><span class="communityLabel">COMMUNITY</span></a>
-  <a class="navCta" href="https://pump.fun/" target="_blank" rel="noopener">Buy on pump.fun</a>
+  <a class="navX" href="https://x.com/i/communities/1969120806023414043" target="_blank" rel="noopener" aria-label="Join the $PUMPKIN community on X"><span class="xMark">𝕏</span><span class="communityLabel">COMMUNITY</span></a>
+  <a class="navCta" href="https://pump.fun/coin/9Eufcq8yqukb4A9eUTAXrRpzB7aKTdAuUnqe75ttpump" target="_blank" rel="noopener">Buy on pump.fun</a>
 </nav>
 
 <main id="top">
@@ -468,7 +670,7 @@ body{background:#030104}
     <div class="eyebrow"><i></i> LIVE ON SOLANA · LAUNCHED ON PUMP.FUN</div>
     <h1>$PUMPKIN</h1>
     <h2>THE HALLOWEEN COIN</h2>
-    <p class="heroIntro">2025 Halloween, Pump.fun changed it's PFP across all their socials into this Halloween themed pill, then the coin blasted to 940K mcap, they will do the same in 2026 and we will moon again.</p>
+    <p class="heroIntro">2025 Halloween, Pump.fun changed it's PFP across all their socials into this Halloween themed pill, then the coin blasted to 940K mcap, they will do the same in 2026 and it will moon again!</p>
 
     <div class="heroCountdown">
       <div class="countLabel">THE NIGHT RETURNS IN</div>
@@ -485,35 +687,78 @@ body{background:#030104}
     </div>
 
     <div class="heroActions">
-      <a class="cta" href="#community">BUY $PUMPKIN ↗</a>
+      <a class="cta" href="https://pump.fun/coin/9Eufcq8yqukb4A9eUTAXrRpzB7aKTdAuUnqe75ttpump" target="_blank" rel="noopener">BUY $PUMPKIN ↗</a>
     </div>
   </div>
   <div class="scrollCue">ENTER THE FOG</div>
 </section>
 
-<div class="ticker"><div class="track">
-  <span><strong>$PUMPKIN</strong> — HALLOWEEN PUMP CULT</span>
-  <span>THE NIGHT IS GETTING CLOSER</span>
-  <span>FRONT-RUN THE NARRATIVE</span>
-  <span>OG PUMPKIN COIN</span>
-  <span><strong>$PUMPKIN</strong> — HALLOWEEN PUMP CULT</span>
-  <span>THE NIGHT IS GETTING CLOSER</span>
-  <span>FRONT-RUN THE NARRATIVE</span>
-  <span>OG PUMPKIN COIN</span>
+<div class="ticker"><div class="track" data-marquee-track>
+  <div class="track-group" aria-hidden="true">
+    <span class="marqueeItem"><strong>$PUMPKIN</strong></span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+    <span class="marqueeItem">THE OFFICIAL OG HALLOWEEN COIN</span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+    <span class="marqueeItem">FRONT RUN THE NARRATIVE</span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+  </div>
+  <div class="track-group" aria-hidden="true">
+    <span class="marqueeItem"><strong>$PUMPKIN</strong></span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+    <span class="marqueeItem">THE OFFICIAL OG HALLOWEEN COIN</span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+    <span class="marqueeItem">FRONT RUN THE NARRATIVE</span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+  </div>
+  <div class="track-group" aria-hidden="true">
+    <span class="marqueeItem"><strong>$PUMPKIN</strong></span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+    <span class="marqueeItem">THE OFFICIAL OG HALLOWEEN COIN</span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+    <span class="marqueeItem">FRONT RUN THE NARRATIVE</span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+  </div>
+  <div class="track-group" aria-hidden="true">
+    <span class="marqueeItem"><strong>$PUMPKIN</strong></span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+    <span class="marqueeItem">THE OFFICIAL OG HALLOWEEN COIN</span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+    <span class="marqueeItem">FRONT RUN THE NARRATIVE</span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+  </div>
+  <div class="track-group" aria-hidden="true">
+    <span class="marqueeItem"><strong>$PUMPKIN</strong></span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+    <span class="marqueeItem">THE OFFICIAL OG HALLOWEEN COIN</span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+    <span class="marqueeItem">FRONT RUN THE NARRATIVE</span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+  </div>
+  <div class="track-group" aria-hidden="true">
+    <span class="marqueeItem"><strong>$PUMPKIN</strong></span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+    <span class="marqueeItem">THE OFFICIAL OG HALLOWEEN COIN</span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+    <span class="marqueeItem">FRONT RUN THE NARRATIVE</span>
+    <span class="marqueeSep" aria-hidden="true">✦</span>
+  </div>
 </div></div>
 
 <section id="thesis">
   <div class="wrap sectionGrid reveal">
     <div class="logoCard card"><img class="bigLogo" src="assets/pumpkin-logo.png" alt="$PUMPKIN"></div>
     <div>
-      <div class="kicker">01 / THE THESIS</div>
-      <div class="title">WHY $PUMPKIN?</div>
-      <div class="quote">“Last year pumpfun changed their profile picture on X, website logo and app into a <strong>pumpkin themed style pump logo</strong>.”</div>
-      <p class="copy">The thesis is seasonal: Halloween creates a recurring narrative, and the pump ecosystem already has a visual connection to the pumpkin. $PUMPKIN is the community play on that narrative — built before the attention arrives.</p>
+      <div class="kicker">THE STORY</div>
+      <div class="title">WHAT IS $PUMPKIN?</div>
+      <p class="copy">$PUMPKIN was created after pump.fun changed their PFP across their socials to this Halloween-themed pill, and the coin reached an ATH of $940K market cap.</p>
+
+      <div class="thesisHeading">THESIS:</div>
+      <p class="copy">They did this last year. Why would they not do it again this year? That's the main front-run here. We will also make sure to go viral across the crypto market with our raiding and overall bagworking. We will be <strong>THE HALLOWEEN COIN.</strong></p>
+
       <div class="features">
-        <div class="feature"><div class="featureIcon">◈</div><div><strong>THE OG PUMPKIN NARRATIVE</strong><span>A coin built specifically around the Halloween pump-logo thesis.</span></div></div>
-        <div class="feature"><div class="featureIcon">◐</div><div><strong>SEASONAL ATTENTION</strong><span>The closer Halloween gets, the more relevant the theme becomes.</span></div></div>
-        <div class="feature"><div class="featureIcon">⌁</div><div><strong>LONG-HOLD CULT</strong><span>For people who understand the seasonal thesis and accept the risk.</span></div></div>
+        <div class="feature"><div class="featureIcon" aria-hidden="true"></div><div><strong>OG PUMPKIN COIN</strong><span>This is the only real OG coin built around the pump.fun PFP Halloween change.</span></div></div>
+        <div class="feature"><div class="featureIcon" aria-hidden="true"></div><div><strong>SEASONAL ATTENTION</strong><span>This coin gets attention every time Halloween approaches. The time is ticking, so don't be too late.</span></div></div>
+        <div class="feature"><div class="featureIcon" aria-hidden="true"></div><div><strong>DIAMOND HANDS ONLY</strong><span>Buy this coin only if you are willing to hold until Halloween.</span></div></div>
       </div>
     </div>
   </div>
@@ -524,33 +769,33 @@ body{background:#030104}
 </section>
 
 <section id="roadmap" class="wrap reveal" style="padding:18px 20px 0;">
-  <div class="kicker">ROADMAP</div>
+  <div class="kicker">THE ROADMAP</div>
   <div class="title" style="margin-bottom:18px;">THE PHASES</div>
-  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;">
-    <div class="card" style="padding:22px 20px;border-radius:18px;">
+  <div class="roadmapGrid">
+    <div class="card roadmapCard">
       <div class="kicker" style="margin-bottom:8px;">PHASE 01</div>
-      <div style="font-family:Bangers,Impact,sans-serif;font-size:30px;letter-spacing:.04em;">THESIS</div>
-      <p class="copy" style="margin-top:10px;">Build the narrative, position the story, and lock in the initial cult around the seasonal pumpkin thesis.</p>
+      <div class="roadmapTitle">THE BUILDUP (SEPTEMBER)</div>
+      <p class="copy" style="margin-top:10px;">Start building $PUMPKIN with steady bagwork. Buy DEX boosts, do raids, support the coin, and grow its presence across the market.</p>
     </div>
-    <div class="card" style="padding:22px 20px;border-radius:18px;">
+    <div class="card roadmapCard">
       <div class="kicker" style="margin-bottom:8px;">PHASE 02</div>
-      <div style="font-family:Bangers,Impact,sans-serif;font-size:30px;letter-spacing:.04em;">ATTENTION</div>
-      <p class="copy" style="margin-top:10px;">Push the community narrative and prepare the market for the Halloween cycle when the pump culture turns orange again.</p>
+      <div class="roadmapTitle">THE BIG HALLOWEEN PUSH (OCTOBER)</div>
+      <p class="copy" style="margin-top:10px;">As Halloween gets closer, the bagwork will increase heavily. This will be the biggest spending phase, with more DEX boosts, raids, and promotion to make $PUMPKIN stand out. We will also take part in Pump.fun GO challenges and push hard across X and other social media to get the coin in front of as many people as possible. The goal is to make $PUMPKIN one of the main coins of the Halloween season.</p>
     </div>
-    <div class="card" style="padding:22px 20px;border-radius:18px;">
+    <div class="card roadmapCard">
       <div class="kicker" style="margin-bottom:8px;">PHASE 03</div>
-      <div style="font-family:Bangers,Impact,sans-serif;font-size:30px;letter-spacing:.04em;">NIGHT OF THE PUMPKIN</div>
-      <p class="copy" style="margin-top:10px;">Let the seasonal hype peak and keep the cult positioned for the 2026 Halloween narrative wave.</p>
+      <div class="roadmapTitle">AFTER THE STORM</div>
+      <p class="copy" style="margin-top:10px;">After Halloween, we will keep supporting $PUMPKIN.</p>
     </div>
   </div>
 </section>
 
 </main>
 
-<section id="chart" aria-label="Chart" style="padding:0 20px 64px;">
+<section id="chart" aria-label="Chart" style="padding:72px 20px 64px;">
   <div class="wrap" style="text-align:center;">
-    <div class="kicker">CHART</div>
     <div class="title">CHART</div>
+    <div style="width:74px;height:4px;margin:18px auto 0;border-radius:99px;background:linear-gradient(90deg,var(--orange),var(--purple));box-shadow:0 0 18px rgba(255,121,0,.25);"></div>
 
     <div style="margin-top:22px;border:1px solid rgba(255,121,0,.25);border-radius:20px;overflow:hidden;background:rgba(10,6,14,.85);box-shadow:0 20px 45px rgba(0,0,0,.35);">
       <iframe
@@ -564,7 +809,78 @@ body{background:#030104}
   </div>
 </section>
 
-<div id="faq" aria-hidden="true" style="position:relative;top:-90px"></div>
+
+<section id="faq" aria-labelledby="faqTitle">
+  <div class="faqWrap">
+    <div class="faqHeader">
+      <h2 id="faqTitle" class="title">FAQ</h2>
+      <div class="faqRule"></div>
+    </div>
+
+    <div class="faqList">
+      <article class="faqItem">
+        <button class="faqQuestion" type="button" aria-expanded="false">
+          <span>What is $Pumpkin?</span>
+          <span class="faqPlus" aria-hidden="true"></span>
+        </button>
+        <div class="faqAnswer" aria-hidden="true">
+          <div class="faqAnswerInner">
+            <p>$Pumpkin is the OG Pump.fun Halloween cult coin. During Halloween 2025, Pump.fun changed their PFP to this pill, and $Pumpkin was created, reaching an ATH market cap of $940K. There’s a good chance they can do something similar again this year, and that’s where $Pumpkin comes in. Also It’s not just about the PFP, $Pumpkin is the main Halloween coin, with a lot of Halloween related things happening around it!  </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="faqItem">
+        <button class="faqQuestion" type="button" aria-expanded="false">
+          <span>Where do I buy it?</span>
+          <span class="faqPlus" aria-hidden="true"></span>
+        </button>
+        <div class="faqAnswer" aria-hidden="true">
+          <div class="faqAnswerInner">
+            <p>Load up some SOL and buy it through the Pump.fun website, or you can buy it directly through the Pump.fun app, which supports easier payment methods like Apple Pay.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="faqItem">
+        <button class="faqQuestion" type="button" aria-expanded="false">
+          <span>Is the coin safe to buy?</span>
+          <span class="faqPlus" aria-hidden="true"></span>
+        </button>
+        <div class="faqAnswer" aria-hidden="true">
+          <div class="faqAnswerInner">
+            <p>This coin is 100% safe to buy. Liquidity is burned and the contract is renounced because it's launched on Pump.fun.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="faqItem">
+        <button class="faqQuestion" type="button" aria-expanded="false">
+          <span>Who is the team?</span>
+          <span class="faqPlus" aria-hidden="true"></span>
+        </button>
+        <div class="faqAnswer" aria-hidden="true">
+          <div class="faqAnswerInner">
+            <p>The CTO lead is @VFXILYASS on X.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="faqItem">
+        <button class="faqQuestion" type="button" aria-expanded="false">
+          <span>How can I contact the team?</span>
+          <span class="faqPlus" aria-hidden="true"></span>
+        </button>
+        <div class="faqAnswer" aria-hidden="true">
+          <div class="faqAnswerInner">
+            <p>Send a DM directly to @PumpkinCultCTO on X, or contact the CTO Lead, @VFXILYASS, directly on X.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 
 <footer>
   <div class="footerIn">
@@ -575,13 +891,13 @@ body{background:#030104}
       </div>
       <div class="footerContract" aria-label="Contract address"><span class="ca">CA: 9Eufcq8yqukb4A9eUTAXrRpzB7aKTdAuUnqe75ttpump</span><button type="button" onclick="copyCA(this)">COPY</button></div>
       <div class="footerSocials" aria-label="Community links">
-        <a class="footerSocial pump" href="https://pump.fun/" target="_blank" rel="noopener" aria-label="Buy on pump.fun">
+        <a class="footerSocial pump" href="https://pump.fun/coin/9Eufcq8yqukb4A9eUTAXrRpzB7aKTdAuUnqe75ttpump" target="_blank" rel="noopener" aria-label="Buy on pump.fun">
           <img src="assets/pumpfun-pill.png" alt="pump.fun">
         </a>
-        <a class="footerSocial telegram" href="#" onclick="alert('Replace with your real Telegram link');return false" aria-label="Telegram">
+        <a class="footerSocial telegram" href="https://t.me/pumpkincoincto" target="_blank" rel="noopener" aria-label="Telegram">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.2 4.2 18 19.4c-.2 1.1-.8 1.4-1.7.9l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.7-7.9c.4-.4-.1-.6-.6-.2L5.9 13.9l-4.6-1.5c-1-.3-1-1 .2-1.5L19.4 3.8c.8-.3 2.1.2 1.8.4Z" fill="currentColor"/></svg>
         </a>
-        <a class="footerSocial x" href="https://x.com/VFXILYASS" target="_blank" rel="noopener" aria-label="X Community">𝕏</a>
+        <a class="footerSocial x" href="https://x.com/PumpkinCultCTO" target="_blank" rel="noopener" aria-label="X">𝕏</a>
       </div>
     </div>
     <div class="footerBottom">
@@ -812,6 +1128,130 @@ try{
     orangeColor:'#ff7900',purpleColor:'#7830fd',bgColor:'#030104'
   }));
 }catch(e){}
+</script>
+
+
+<script>
+/* Halloween FAQ accordion — delayed answer reveal keeps the text from popping in. */
+(function(){
+  const items = document.querySelectorAll('.faqItem');
+  items.forEach(item => {
+    const button = item.querySelector('.faqQuestion');
+    const answer = item.querySelector('.faqAnswer');
+    button.addEventListener('click', () => {
+      const willOpen = !item.classList.contains('open');
+
+      items.forEach(other => {
+        if(other !== item){
+          other.classList.remove('open');
+          other.querySelector('.faqQuestion').setAttribute('aria-expanded','false');
+          other.querySelector('.faqAnswer').setAttribute('aria-hidden','true');
+        }
+      });
+
+      item.classList.toggle('open', willOpen);
+      button.setAttribute('aria-expanded', String(willOpen));
+      answer.setAttribute('aria-hidden', String(!willOpen));
+    });
+  });
+
+})();
+</script>
+
+<script>
+(() => {
+  const track = document.querySelector('[data-marquee-track]');
+  if (!track) return;
+
+  let groupWidth = 0;
+  let offset = 0;
+  let last = performance.now();
+  let ready = false;
+  const speed = 55; // px per second
+
+  const measure = () => {
+    const first = track.querySelector('.track-group');
+    if (!first) return;
+    groupWidth = first.getBoundingClientRect().width;
+    if (groupWidth > 0) ready = true;
+  };
+
+  const tick = (now) => {
+    const dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
+    if (ready && groupWidth > 0) {
+      offset += speed * dt;
+      if (offset >= groupWidth) offset -= groupWidth;
+      track.style.transform = `translate3d(${-offset}px,0,0)`;
+    }
+    requestAnimationFrame(tick);
+  };
+
+  const start = () => {
+    measure();
+    requestAnimationFrame(tick);
+  };
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => { measure(); start(); });
+  } else {
+    start();
+  }
+
+  window.addEventListener('resize', () => {
+    const oldWidth = groupWidth;
+    measure();
+    if (oldWidth > 0 && groupWidth > 0) {
+      offset = offset * (groupWidth / oldWidth);
+      if (offset >= groupWidth) offset %= groupWidth;
+    }
+  });
+})();
+</script>
+
+<script>
+/* Section navigation: place the selected section's visual center at the viewport center. */
+(function(){
+  const ids = new Set(['thesis','roadmap','chart','faq']);
+
+  function centerSection(target, smooth = true){
+    if (!target) return;
+
+    // Read the section's actual position/height at the moment of navigation.
+    const rect = target.getBoundingClientRect();
+    const pageCenter = window.scrollY + rect.top + rect.height / 2;
+    const viewportCenter = window.innerHeight / 2;
+    const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+
+    // If a section is taller than the viewport, center its top area as cleanly as possible.
+    const desiredY = rect.height <= window.innerHeight
+      ? pageCenter - viewportCenter
+      : window.scrollY + rect.top;
+
+    const y = Math.max(0, Math.min(desiredY, maxY));
+    window.scrollTo({ top: y, behavior: smooth ? 'smooth' : 'auto' });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    const id = (link.getAttribute('href') || '').slice(1);
+    if (!ids.has(id)) return;
+
+    link.addEventListener('click', function(e){
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      centerSection(target, true);
+      history.pushState(null, '', '#' + id);
+    });
+  });
+
+  // Also center correctly when a section is opened directly with its hash.
+  if (ids.has(location.hash.slice(1))) {
+    window.addEventListener('load', () => {
+      requestAnimationFrame(() => centerSection(document.getElementById(location.hash.slice(1)), false));
+    }, { once:true });
+  }
+})();
 </script>
 
 </body>
