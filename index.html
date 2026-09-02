@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070409">
 <title>$PUMPKIN—The Halloween Coin</title>
-<link rel="icon" type="image/png" href="assets/pumpkin-logo.png" sizes="256x256">
+<link rel="icon" type="image/png" href="assets/pumpkin-favicon.png" sizes="512x512">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://dexscreener.com">
@@ -33,17 +33,6 @@ body:before{
 }
 a{text-decoration:none;color:inherit}
 button{font:inherit}
-#cursorGlow{
-  position:fixed;left:0;top:0;width:340px;height:340px;border-radius:50%;
-  pointer-events:none;z-index:2;transform:translate(-50%,-50%);
-  background:
-    radial-gradient(circle at 50% 50%,rgba(255,121,0,.055) 0%,rgba(255,121,0,.028) 18%,rgba(255,121,0,.012) 34%,rgba(255,121,0,.004) 52%,transparent 74%),
-    radial-gradient(circle at 38% 40%,rgba(185,135,255,.022),transparent 55%);
-  filter:blur(8px);
-  opacity:.9;
-  mix-blend-mode:screen;
-  will-change:transform,left,top
-}
 #sky{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
 .star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;opacity:.3;animation:twinkle 3.4s ease-in-out infinite}
 @keyframes twinkle{50%{opacity:.07;transform:scale(.4)}}
@@ -1945,7 +1934,7 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opac
   </div>
 </aside>
 
-<div id="cursorGlow"></div><div id="sky"></div>
+<div id="sky"></div>
 
 <nav>
   <a class="brand" href="#top"><img src="assets/pumpkin-logo.png" alt="$PUMPKIN" width="56" height="56" fetchpriority="high" decoding="async"><span>$PUMPKIN</span></a>
@@ -2234,18 +2223,6 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opac
 <script>
 const sky=document.getElementById('sky');
 for(let i=0;i<72;i++){const s=document.createElement('i');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=(Math.random()*4)+'s';s.style.opacity=.1+Math.random()*.45;sky.appendChild(s)}
-const glow=document.getElementById('cursorGlow');
-
-function moveGlow(e){
-  const scale = window.visualViewport ? window.visualViewport.scale : 1;
-  const x = (e.clientX ?? 0) / scale;
-  const y = (e.clientY ?? 0) / scale;
-  glow.style.left = x + 'px';
-  glow.style.top = y + 'px';
-  glow.style.transform = 'translate(-50%, -50%)';
-}
-
-document.addEventListener('pointermove', moveGlow);
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(e=>observer.observe(e));
 
