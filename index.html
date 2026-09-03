@@ -1852,6 +1852,13 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opac
 }
 </style>
 
+
+<style id="mobile-origin-pill-fix">
+/* Hide the decorative flying pills only on phone layouts. Desktop remains unchanged. */
+@media (max-width: 767px) {
+  .storyV17Visual .storyPill { display: none !important; }
+}
+</style>
 </head>
 <body>
 <div id="pageLoader" aria-live="polite" aria-label="Loading site">
