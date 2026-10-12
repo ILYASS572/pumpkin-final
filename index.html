@@ -53,9 +53,9 @@ nav{
 .navTimer{display:inline-flex;align-items:center;gap:9px;padding:12px 15px;border:1px solid rgba(255,121,0,.35);border-radius:10px;background:rgba(255,121,0,.045);color:#ffb858;font-size:11px;font-weight:900;letter-spacing:.1em;white-space:nowrap}
 .navTimer .timerIcon{font-size:15px;line-height:1}
 .navTimer .timerValue{color:var(--cream);letter-spacing:.06em}
-.navX{display:inline-flex;align-items:center;justify-content:center;gap:11px;min-width:142px;height:48px;padding:0 18px;border:1px solid rgba(255,255,255,.32);border-radius:4px;background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.018));color:#fff;font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;transition:.2s;flex:0 0 auto;box-shadow:inset 0 0 0 1px rgba(0,0,0,.55),0 0 22px rgba(125,56,255,.08)}
-.navX:hover{border-color:rgba(255,255,255,.72);background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(125,56,255,.08));color:#fff;transform:translateY(-1px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 0 28px rgba(125,56,255,.16)}
-.navX .xMark{font-size:27px;line-height:1;font-weight:300;letter-spacing:-.08em}.navX .communityLabel{font-size:11px;letter-spacing:.14em}
+.navX{display:inline-flex;align-items:center;justify-content:center;gap:11px;min-width:142px;height:48px;padding:0 18px;border:1px solid rgba(34,158,217,.8);border-radius:4px;background:linear-gradient(180deg,#229ed9,#168ac4);color:#fff;font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;transition:.2s;flex:0 0 auto;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 0 22px rgba(34,158,217,.22)}
+.navX:hover{border-color:#61c8f5;background:linear-gradient(180deg,#35b5ef,#168ac4);color:#fff;transform:translateY(-1px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 0 28px rgba(34,158,217,.38)}
+.navX .telegramMark{width:24px;height:24px;flex:0 0 auto}.navX .communityLabel{font-size:11px;letter-spacing:.14em}
 .navCta,.cta{
   display:inline-flex;align-items:center;justify-content:center;
   border:0;border-radius:4px;padding:14px 20px;background:linear-gradient(135deg,#ff7900,#ffc34f);
@@ -1859,6 +1859,200 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opac
   .storyV17Visual .storyPill { display: none !important; }
 }
 </style>
+<style id="pumpmas-feature-styles">
+/* PUMPMAS — playful gift-opening scene, designed as a tiny Christmas world. */
+.pumpmas-launcher{
+  --pm-gold:#ffe49c;--pm-green:#073e36;--pm-red:#df3150;
+  position:fixed;right:clamp(14px,2.5vw,30px);bottom:clamp(14px,2.5vw,28px);z-index:120;
+  box-sizing:border-box;width:clamp(226px,22vw,270px);min-height:105px;display:flex;align-items:center;gap:13px;
+  padding:12px 15px 13px 12px;overflow:hidden;text-align:left;isolation:isolate;
+  color:#fff9ee;cursor:pointer;border:1px solid rgba(255,225,155,.94);border-radius:20px;
+  background:linear-gradient(125deg,#08705c 0%,#075144 46%,#502349 100%);
+  box-shadow:0 14px 36px rgba(5,13,38,.42),0 0 0 4px rgba(8,57,54,.42),0 0 28px rgba(63,221,173,.23);
+  transform-origin:72% 80%;animation:pumpmasLauncherWiggle 5.3s ease-in-out infinite;
+  transition:transform .22s ease,box-shadow .22s ease,filter .22s ease
+}
+.pumpmas-launcher::before{
+  content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;
+  background:linear-gradient(112deg,transparent 12%,rgba(255,255,255,.23) 43%,transparent 68%);
+  transform:translateX(-125%);animation:pumpmasLauncherShine 5.8s ease-in-out infinite
+}
+.pumpmas-launcher::after{
+  content:"✦  ❄  ✦";position:absolute;right:10px;top:6px;color:rgba(255,236,174,.82);
+  font-size:10px;letter-spacing:5px;pointer-events:none
+}
+.pumpmas-launcher:hover,.pumpmas-launcher:focus-visible{animation:none;transform:translateY(-5px) rotate(0) scale(1.025);filter:brightness(1.12);box-shadow:0 19px 44px rgba(5,13,38,.48),0 0 0 4px rgba(8,57,54,.56),0 0 38px rgba(63,221,173,.35)}
+.pumpmas-launcher:active{animation:none;transform:translateY(-1px) scale(.99)}
+.pumpmas-launcher:focus-visible{outline:3px solid #fff0b8;outline-offset:5px}
+.pumpmas-launcherIcon{
+  position:relative;flex:0 0 80px;width:80px;height:80px;display:grid;place-items:center;
+  border:2px solid #ffe7a5;border-radius:50%;background:radial-gradient(circle at 32% 20%,#fffdf3 0 7%,#e5f7ef 42%,#83d6b2 100%);
+  box-shadow:0 0 0 4px rgba(255,224,151,.18),0 0 22px rgba(255,214,115,.27),inset 0 0 0 4px rgba(255,255,255,.2);
+  animation:pumpmasOrnamentFloat 3.5s ease-in-out infinite
+}
+.pumpmas-launcherIcon::before{content:"";position:absolute;inset:-7px;border:1px dashed rgba(255,235,174,.86);border-radius:50%;animation:pumpmasOrbit 20s linear infinite}
+.pumpmas-launcherIcon::after{content:"";position:absolute;top:-7px;left:50%;width:17px;height:10px;transform:translateX(-50%);border:2px solid #f3d17b;border-radius:5px 5px 2px 2px;background:#08705c}
+.pumpmas-launcherIcon img{width:69px;height:69px;object-fit:contain;filter:drop-shadow(0 3px 3px rgba(0,0,0,.16))}
+.pumpmas-launcherCopy{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding-top:4px}
+.pumpmas-launcherKicker{color:#ffe8a7;font-family:'Nunito Sans',Arial,sans-serif;font-size:8px;font-weight:1000;letter-spacing:.19em;line-height:1.2;text-transform:uppercase}
+.pumpmas-launcherName{font-family:'Fredoka','Trebuchet MS',sans-serif;color:#fffdf5;font-size:clamp(20px,2vw,24px);font-weight:700;letter-spacing:-.035em;line-height:1.1;text-shadow:0 2px 12px rgba(255,224,153,.2)}
+.pumpmas-launcherAction{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;margin-top:2px;padding:7px 10px 6px;
+  border:1px solid rgba(255,250,231,.95);border-radius:999px;background:linear-gradient(135deg,#ff5268,#d81742 70%,#b6143a);
+  box-shadow:0 3px 0 #81152f,0 5px 13px rgba(0,0,0,.24);color:#fffdf5;font-family:'Nunito Sans',Arial,sans-serif;font-size:10px;font-weight:1000;
+  letter-spacing:.15em;line-height:1;text-transform:uppercase;animation:pumpmasActionPulse 2.2s ease-in-out infinite
+}
+.pumpmas-launcherAction .pmArrow{font-size:14px;line-height:8px;color:#ffe9a5}
+.pumpmas-launcherSnow{position:absolute;right:13px;bottom:10px;color:rgba(255,255,255,.7);font-size:14px;pointer-events:none;animation:pumpmasSnowflakeTurn 9s linear infinite}
+@keyframes pumpmasLauncherWiggle{
+  0%,78%,100%{transform:rotate(0deg)}
+  81%{transform:rotate(-1.3deg)}
+  83%{transform:rotate(1.35deg)}
+  85%{transform:rotate(-.9deg)}
+  87%{transform:rotate(0deg)}
+}
+@keyframes pumpmasLauncherShine{0%,62%,100%{transform:translateX(-125%)}78%{transform:translateX(125%)}}
+@keyframes pumpmasOrnamentFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes pumpmasOrbit{to{transform:rotate(360deg)}}
+@keyframes pumpmasActionPulse{0%,100%{box-shadow:0 3px 0 #81152f,0 5px 13px rgba(0,0,0,.24),0 0 0 0 rgba(255,76,109,0)}50%{box-shadow:0 3px 0 #81152f,0 5px 16px rgba(0,0,0,.3),0 0 0 5px rgba(255,76,109,.17)}}
+@keyframes pumpmasSnowflakeTurn{to{transform:rotate(360deg)}}
+
+.pumpmas-dialog{
+  box-sizing:border-box;width:min(860px,calc(100% - 30px));max-width:none;max-height:min(92dvh,850px);margin:auto;padding:0;overflow:auto;
+  border:2px solid #fff3d5;border-radius:30px;background:#fff8e9;color:#163d50;
+  box-shadow:0 32px 120px rgba(2,8,37,.72),0 0 0 6px rgba(130,203,246,.22),0 0 90px rgba(104,174,255,.25)
+}
+.pumpmas-dialog[open]{animation:pumpmasDialogEnter .46s cubic-bezier(.18,.85,.24,1) both}
+@keyframes pumpmasDialogEnter{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.pumpmas-dialog::backdrop{background:radial-gradient(ellipse at 50% 34%,rgba(42,99,166,.45),rgba(5,10,35,.86) 73%);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.pumpmas-card{position:relative;isolation:isolate;overflow:hidden;border-radius:27px;background:#fff7e5}
+.pumpmas-close{
+  position:absolute;top:17px;right:17px;z-index:10;display:grid;place-items:center;width:42px;height:42px;
+  border:2px solid rgba(255,255,255,.9);border-radius:50%;background:rgba(21,48,85,.72);color:#fffdf7;
+  font-family:'Nunito Sans',Arial,sans-serif;font-size:25px;font-weight:800;line-height:1;cursor:pointer;
+  box-shadow:0 5px 15px rgba(14,29,74,.25);backdrop-filter:blur(8px);transition:background .2s,transform .2s
+}
+.pumpmas-close:hover{transform:rotate(90deg) scale(1.05);background:#e43556}
+.pumpmas-close:focus-visible{outline:3px solid #fff1a9;outline-offset:4px}
+
+/* The top half is an illustrated winter sky, not a decorated text box. */
+.pm-scene{
+  position:relative;isolation:isolate;height:365px;overflow:hidden;
+  background:linear-gradient(180deg,#192b66 0%,#3f5091 31%,#867ac0 62%,#c6c5ed 100%);
+}
+.pm-scene::before{position:absolute;z-index:-2;inset:0;content:"";background:radial-gradient(ellipse at 49% 40%,rgba(255,203,185,.46),transparent 20%),radial-gradient(ellipse at 20% 30%,rgba(114,244,223,.23),transparent 28%),radial-gradient(ellipse at 81% 42%,rgba(255,132,180,.2),transparent 27%)}
+.pm-aurora{position:absolute;z-index:-1;top:31px;width:56%;height:130px;opacity:.35;filter:blur(16px);border-radius:50%;pointer-events:none}
+.pm-aurora-one{left:-4%;background:linear-gradient(100deg,transparent,#70f4cf,#a6f5ec,transparent);transform:rotate(-15deg);animation:pmAuroraDrift 8s ease-in-out infinite alternate}
+.pm-aurora-two{right:-8%;top:64px;background:linear-gradient(100deg,transparent,#f8a1d5,#f6d3a5,transparent);transform:rotate(15deg);animation:pmAuroraDrift 10s ease-in-out infinite alternate-reverse}
+@keyframes pmAuroraDrift{from{translate:-10px 0;scale:.96 1}to{translate:18px 8px;scale:1.06 1.12}}
+.pm-moon{position:absolute;top:55px;right:15%;width:62px;height:62px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fffef1,#ffe8b3 68%,#ffc9b4);box-shadow:0 0 0 10px rgba(255,238,204,.08),0 0 50px rgba(255,233,180,.42)}
+.pm-moon::after{content:"";position:absolute;top:13px;left:15px;width:8px;height:8px;border-radius:50%;background:rgba(214,170,133,.19);box-shadow:18px 15px 0 3px rgba(214,170,133,.14),-3px 24px 0 1px rgba(214,170,133,.16)}
+.pm-stars{position:absolute;inset:0;pointer-events:none}
+.pm-stars span{position:absolute;color:#fff7d3;font-size:clamp(11px,1.8vw,19px);text-shadow:0 0 12px rgba(255,250,204,.9);animation:pmTwinkle 2.6s ease-in-out infinite alternate}
+.pm-stars span:nth-child(3n){color:#b5ffec;animation-delay:.7s}
+.pm-stars span:nth-child(4n){color:#ffd5eb;animation-delay:1.3s}
+@keyframes pmTwinkle{from{opacity:.38;transform:scale(.78) rotate(-8deg)}to{opacity:1;transform:scale(1.15) rotate(12deg)}}
+.pm-light-string{position:absolute;top:-8px;left:-2%;right:-2%;height:58px;display:flex;justify-content:space-around;align-items:flex-start;pointer-events:none}
+.pm-light-string::before{content:"";position:absolute;top:-7px;left:0;right:0;height:49px;border-bottom:2px solid rgba(20,36,77,.78);border-radius:0 0 50% 45%;box-shadow:0 5px 0 rgba(255,255,255,.04)}
+.pm-light-string span{position:relative;z-index:1;display:block;width:12px;height:17px;margin-top:22px;border:1px solid rgba(255,255,255,.64);border-radius:48% 48% 45% 45%;background:#ffcf5c;box-shadow:0 0 13px 4px rgba(255,208,90,.6);animation:pmBulbPulse 1.8s ease-in-out infinite alternate}
+.pm-light-string span:nth-child(2n){margin-top:28px;background:#ff6c98;box-shadow:0 0 13px 4px rgba(255,108,152,.5);animation-delay:.4s}
+.pm-light-string span:nth-child(3n){background:#8dffe0;box-shadow:0 0 13px 4px rgba(141,255,224,.48);animation-delay:.8s}
+.pm-light-string span:nth-child(5n){background:#fff5ea;box-shadow:0 0 13px 4px rgba(255,245,234,.5);animation-delay:1.2s}
+@keyframes pmBulbPulse{from{filter:brightness(.84);opacity:.72}to{filter:brightness(1.22);opacity:1}}
+.pm-mountain{position:absolute;z-index:-1;left:-5%;right:-5%;bottom:20px;pointer-events:none}
+.pm-mountain-back{height:154px;background:#8ea7d0;clip-path:polygon(0 68%,12% 34%,21% 52%,34% 10%,45% 53%,57% 25%,68% 53%,80% 17%,91% 49%,100% 28%,100% 100%,0 100%);opacity:.78}
+.pm-mountain-back::after{content:"";position:absolute;inset:0;background:#f3f1f5;clip-path:polygon(21% 52%,34% 10%,45% 53%,38% 39%,34% 45%,30% 30%,26% 48%,23% 45%)}
+.pm-mountain-front{bottom:0;height:102px;background:linear-gradient(180deg,#e8f4ff,#f9f9ff);clip-path:polygon(0 42%,12% 61%,24% 32%,38% 63%,52% 39%,65% 60%,79% 30%,90% 56%,100% 40%,100% 100%,0 100%)}
+.pm-pine{position:absolute;z-index:1;bottom:32px;width:76px;height:138px;background:linear-gradient(110deg,#0d4852,#12665c);clip-path:polygon(50% 0,66% 21%,59% 21%,79% 43%,69% 43%,96% 72%,62% 72%,62% 100%,39% 100%,39% 72%,4% 72%,30% 43%,21% 43%,42% 21%,35% 21%);filter:drop-shadow(0 5px 8px rgba(24,30,71,.23))}
+.pm-pine::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 0 44%,rgba(255,255,255,.10) 44% 48%,transparent 48%)}
+.pm-pine-left{left:4%;transform:scale(1.08);transform-origin:bottom}
+.pm-pine-left::after{content:"";position:absolute;top:39px;left:19px;width:8px;height:8px;border-radius:50%;background:#ffd16a;box-shadow:18px 24px 0 #ff7399,0 54px 0 #8dffe0,24px 72px 0 #ffcf5c,10px 94px 0 #ff7c9e}
+.pm-pine-right{right:4%;bottom:29px;transform:scale(.92);transform-origin:bottom;background:linear-gradient(110deg,#0b404a,#1a655a)}
+.pm-pine-right::after{content:"";position:absolute;top:45px;left:29px;width:8px;height:8px;border-radius:50%;background:#ff7399;box-shadow:-14px 28px 0 #ffd16a,8px 54px 0 #8dffe0,-12px 78px 0 #ffcf5c}
+.pm-snowbank{position:absolute;z-index:3;left:-4%;right:-4%;bottom:-29px;height:83px;border-radius:50% 50% 0 0;background:linear-gradient(180deg,#fffaff,#d8edff);box-shadow:0 -10px 28px rgba(255,255,255,.34)}
+.pm-snowbank::before{content:"";position:absolute;left:8%;right:10%;top:5px;height:21px;border-radius:50%;background:rgba(255,255,255,.88);filter:blur(7px)}
+.pm-flake{position:absolute;z-index:4;color:#fff;font-size:20px;text-shadow:0 0 12px rgba(255,255,255,.8);pointer-events:none;animation:pmSnowFloat 6s ease-in-out infinite}
+.pm-flake-a{top:31%;left:16%;font-size:20px;animation-delay:-1.3s}.pm-flake-b{top:50%;left:27%;font-size:13px;animation-delay:-3s}.pm-flake-c{top:25%;right:26%;font-size:15px;animation-delay:-2s}.pm-flake-d{top:43%;right:15%;font-size:24px;animation-delay:-4s}.pm-flake-e{top:62%;left:40%;font-size:12px;animation-delay:-2.6s}
+@keyframes pmSnowFloat{0%,100%{transform:translate3d(0,0,0) rotate(0);opacity:.6}50%{transform:translate3d(5px,-12px,0) rotate(24deg);opacity:1}}
+
+/* Open red gift, gold ribbon, and the token emblem popping out into the sky. */
+.pm-gift-pop{position:absolute;z-index:5;left:50%;bottom:11px;width:300px;height:255px;transform:translateX(-50%)}
+.pm-gift-box{position:absolute;z-index:3;left:50%;bottom:0;width:226px;height:125px;transform:translateX(-50%);border:2px solid #ffdfa0;border-radius:9px 9px 18px 18px;background:linear-gradient(105deg,#ff5369 0%,#e52f55 48%,#bf1d49 100%);box-shadow:0 15px 26px rgba(24,28,74,.28),inset 0 3px rgba(255,255,255,.18)}
+.pm-gift-box::before{content:"";position:absolute;left:50%;top:-1px;bottom:0;width:37px;transform:translateX(-50%);background:linear-gradient(90deg,#ffd971,#fff0a9 50%,#ffc64c);box-shadow:0 0 10px rgba(255,212,102,.25)}
+.pm-gift-box::after{content:"";position:absolute;left:0;right:0;top:26px;height:27px;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(113,10,42,.09));border-top:1px solid rgba(255,235,182,.6);border-bottom:1px solid rgba(255,235,182,.3)}
+.pm-gift-lid{position:absolute;z-index:4;left:50%;bottom:116px;width:267px;height:41px;transform:translateX(-50%) rotate(-8deg);border:2px solid #ffe5a7;border-radius:8px;background:linear-gradient(100deg,#fa526a,#d92750 59%,#b91f49);box-shadow:0 10px 18px rgba(28,26,74,.24),inset 0 3px rgba(255,255,255,.2);animation:pmLidFloat 4.2s ease-in-out infinite}
+.pm-gift-lid::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:38px;transform:translateX(-50%);background:linear-gradient(90deg,#ffd66e,#fff0a7 52%,#ffbf48)}
+.pm-gift-lid::after{content:"";position:absolute;top:-30px;right:29px;width:45px;height:27px;border:8px solid #ffd66e;border-radius:60% 60% 10% 60%;transform:rotate(18deg);box-shadow:inset 0 0 0 2px rgba(255,255,255,.24)}
+@keyframes pmLidFloat{0%,100%{transform:translateX(-50%) rotate(-8deg) translateY(0)}50%{transform:translateX(-50%) rotate(-10deg) translateY(-5px)}}
+.pm-gift-logo{position:absolute;z-index:6;left:50%;bottom:89px;display:grid;place-items:center;width:126px;height:126px;transform:translateX(-50%);border:3px solid #fff4d5;border-radius:50%;background:radial-gradient(circle at 31% 23%,#fffef5 0%,#e7fff6 56%,#97e0d1 100%);box-shadow:0 0 0 7px rgba(255,242,199,.19),0 0 0 13px rgba(255,242,199,.1),0 0 35px rgba(255,247,198,.62),0 12px 22px rgba(28,29,74,.18);animation:pmLogoRise 3.8s ease-in-out infinite}
+.pm-gift-logo img{width:105px;height:105px;object-fit:contain;filter:drop-shadow(0 4px 5px rgba(17,50,58,.15))}
+@keyframes pmLogoRise{0%,100%{transform:translateX(-50%) translateY(0) rotate(-2deg)}50%{transform:translateX(-50%) translateY(-7px) rotate(2deg)}}
+.pm-pop-spark{position:absolute;z-index:7;color:#fff0a6;text-shadow:0 0 15px rgba(255,243,177,.95);font-size:25px;animation:pmPopSpark 2.4s ease-in-out infinite}
+.pm-pop-spark-a{left:24px;top:72px}.pm-pop-spark-b{right:22px;top:88px;font-size:19px;animation-delay:.8s}.pm-pop-spark-c{right:46px;top:24px;font-size:15px;animation-delay:1.2s}.pm-pop-spark-d{left:46px;top:18px;font-size:14px;animation-delay:.45s}
+@keyframes pmPopSpark{0%,100%{transform:scale(.75) rotate(0);opacity:.55}50%{transform:scale(1.25) rotate(20deg);opacity:1}}
+
+/* Warm paper-like invitation: contrasting palette and playful, high-contrast typography. */
+.pm-message{position:relative;z-index:6;padding:27px clamp(22px,6vw,66px) 31px;text-align:center;background:linear-gradient(180deg,#fffaf0 0%,#fff4db 100%);border-top:5px solid #fff}
+.pm-message::before{position:absolute;z-index:-1;top:-8px;left:0;right:0;height:16px;content:"";background:radial-gradient(12px 10px at 12px 2px,transparent 11px,#fffaf0 12px) repeat-x;background-size:24px 16px}
+.pm-message::after{position:absolute;z-index:-1;top:23px;right:23px;bottom:22px;left:23px;content:"";border:1px dashed rgba(205,142,64,.28);border-radius:16px;pointer-events:none}
+.pm-eyebrow{display:inline-flex;align-items:center;justify-content:center;gap:9px;margin:0 auto 10px;padding:7px 13px;border-radius:999px;background:#e1f7ee;color:#15715e;font-family:'Nunito Sans',Arial,sans-serif;font-size:10px;font-weight:1000;letter-spacing:.15em;line-height:1.2;text-transform:uppercase}
+.pm-eyebrow span{color:#e53956;font-size:13px}
+.pm-title{margin:0;color:#1c4773;font-family:'Fredoka','Trebuchet MS',sans-serif;font-weight:700;letter-spacing:-.045em;line-height:.99;text-shadow:0 2px 0 rgba(255,255,255,.65)}
+.pm-title-small{display:block;margin-bottom:3px;font-family:'Nunito Sans',Arial,sans-serif;font-size:clamp(11px,1.5vw,14px);font-weight:1000;letter-spacing:.25em;line-height:1.5;text-transform:uppercase;color:#db4058}
+.pm-title-brand{display:block;font-size:clamp(39px,6.4vw,62px);color:#e32f51;text-shadow:0 3px 0 #ffd8a1,0 6px 0 rgba(228,74,92,.09);-webkit-text-stroke:.5px #c82046}
+.pm-title-brand .pm-title-dollar{color:#147764;-webkit-text-stroke:0}
+.pm-subtitle{margin:9px 0 0;color:#53809a;font-family:'Nunito Sans',Arial,sans-serif;font-size:clamp(11px,1.6vw,14px);font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.pm-copy{max-width:580px;margin:16px auto 0;color:#37556b;font-family:'Nunito Sans',Arial,sans-serif;font-size:clamp(14px,1.8vw,16px);font-weight:600;line-height:1.7}
+.pm-copy p{margin:0 0 8px}.pm-copy p:last-child{margin-bottom:0}.pm-copy strong{color:#d52d4c;font-weight:1000}
+.pumpmas-cta{
+  position:relative;isolation:isolate;display:flex;align-items:center;justify-content:center;gap:13px;width:min(380px,100%);min-height:62px;margin:22px auto 0;padding:15px 24px;overflow:hidden;
+  border:2px solid #fff8db;border-radius:999px;background:linear-gradient(110deg,#ff6572 0%,#e72c51 47%,#c51a45 100%);
+  box-shadow:inset 0 2px rgba(255,255,255,.28),0 5px 0 #962044,0 10px 22px rgba(205,39,74,.24),0 0 0 5px rgba(233,55,86,.09);
+  color:#fffdf4;font-family:'Fredoka','Trebuchet MS',sans-serif;font-size:clamp(16px,2.2vw,20px);font-weight:700;letter-spacing:.065em;line-height:1.2;text-decoration:none;text-transform:uppercase;
+  transition:transform .2s,box-shadow .2s,filter .2s
+}
+.pumpmas-cta::before{position:absolute;z-index:-1;inset:0;content:"";background:linear-gradient(110deg,transparent 15%,rgba(255,255,255,.35) 45%,transparent 70%);transform:translateX(-120%);animation:pumpmasCtaShine 3.6s ease-in-out infinite}
+.pumpmas-cta::after{content:"";position:absolute;inset:5px;border:1px solid rgba(255,245,222,.35);border-radius:999px;pointer-events:none}
+@keyframes pumpmasCtaShine{0%,42%,100%{transform:translateX(-120%)}68%{transform:translateX(120%)}}
+.pumpmas-cta:hover{transform:translateY(-3px) scale(1.015);filter:brightness(1.06);box-shadow:inset 0 2px rgba(255,255,255,.34),0 8px 0 #962044,0 15px 28px rgba(205,39,74,.3),0 0 28px rgba(255,105,124,.25)}
+.pumpmas-cta:active{transform:translateY(2px);box-shadow:inset 0 2px rgba(255,255,255,.25),0 2px 0 #962044,0 5px 12px rgba(205,39,74,.2)}
+.pumpmas-cta:focus-visible{outline:3px solid #1a6e65;outline-offset:5px}
+.pumpmas-cta .pm-ctaSpark{font-size:22px;color:#ffeaa8;text-shadow:0 0 12px rgba(255,238,189,.65)}
+.pumpmas-cta .pm-ctaArrow{font-family:'Nunito Sans',Arial,sans-serif;font-size:21px;color:#ffeaa8;transition:transform .2s}
+.pumpmas-cta:hover .pm-ctaArrow{transform:translateX(4px)}
+.pm-footnote{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 13px;margin:14px 0 0;color:#77909e;font-family:'Nunito Sans',Arial,sans-serif;font-size:9px;font-weight:1000;letter-spacing:.13em;text-transform:uppercase}
+.pm-footnote .pm-foot-snow{color:#24a88e;font-size:13px}
+@media(max-width:600px){
+  .pumpmas-launcher{right:12px;bottom:12px;width:206px;min-height:86px;gap:10px;padding:9px 11px 10px 9px;border-radius:17px}
+  .pumpmas-launcherIcon{flex-basis:63px;width:63px;height:63px}.pumpmas-launcherIcon img{width:55px;height:55px}
+  .pumpmas-launcherName{font-size:19px}.pumpmas-launcherKicker{font-size:7px;letter-spacing:.14em}.pumpmas-launcherAction{padding:6px 8px;font-size:9px}
+  .pumpmas-dialog{width:calc(100% - 14px);max-height:94dvh;border-radius:23px}
+  .pumpmas-card{border-radius:20px}.pumpmas-close{top:11px;right:11px;width:37px;height:37px}
+  .pm-scene{height:305px}
+  .pm-moon{top:49px;right:12%;width:46px;height:46px}
+  .pm-pine{width:58px;height:110px}.pm-pine-left{left:1%}.pm-pine-right{right:1%}
+  .pm-gift-pop{transform:translateX(-50%) scale(.82);transform-origin:bottom center;bottom:8px}
+  .pm-message{padding:25px 18px 26px}
+  .pm-message::after{top:18px;right:12px;bottom:15px;left:12px}
+  .pm-eyebrow{max-width:88%;font-size:8px;letter-spacing:.1em;padding:7px 10px}
+  .pm-title-small{font-size:10px;letter-spacing:.18em}.pm-title-brand{font-size:clamp(38px,10vw,52px)}
+  .pm-subtitle{font-size:9px;letter-spacing:.08em}.pm-copy{font-size:13px;line-height:1.6;margin-top:13px}
+  .pumpmas-cta{min-height:56px;margin-top:19px;gap:10px;padding:12px 15px;font-size:16px}
+  .pm-footnote{font-size:8px;letter-spacing:.08em}
+}
+@media(max-width:370px){
+  .pm-scene{height:274px}.pm-gift-pop{transform:translateX(-50%) scale(.72)}
+  .pm-pine-left{left:-3%}.pm-pine-right{right:-3%}.pm-message{padding-left:14px;padding-right:14px}
+  .pm-title-brand{font-size:37px}.pumpmas-cta{font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  .pumpmas-launcher,.pumpmas-launcher::before,.pumpmas-launcherIcon,.pumpmas-launcherIcon::before,.pumpmas-launcherAction,.pumpmas-launcherSnow,
+  .pumpmas-dialog[open],.pm-aurora,.pm-stars span,.pm-light-string span,.pm-flake,.pm-gift-lid,.pm-gift-logo,.pm-pop-spark,.pumpmas-cta::before{animation:none!important;transition:none!important}
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="pageLoader" aria-live="polite" aria-label="Loading site">
@@ -1956,7 +2150,7 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opac
     <span>TIMER</span>
     <span class="timerValue"><b id="navD">--</b>D : <b id="navH">--</b>H : <b id="navM">--</b>M : <b id="navS">--</b>S</span>
   </div>
-  <a class="navX" href="https://x.com/i/communities/1969120806023414043" target="_blank" rel="noopener" aria-label="Join the $PUMPKIN community on X"><span class="xMark">𝕏</span><span class="communityLabel">COMMUNITY</span></a>
+  <a class="navX" href="https://t.me/pumpkincoincto" target="_blank" rel="noopener" aria-label="Join the $PUMPKIN community on Telegram"><svg class="telegramMark" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.2 4.2 18 19.4c-.2 1.1-.8 1.4-1.7.9l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.7-7.9c.4-.4-.1-.6-.6-.2L5.9 13.9l-4.6-1.5c-1-.3-1-1 .2-1.5L19.4 3.8c.8-.3 2.1.2 1.8.4Z" fill="currentColor"/></svg><span class="communityLabel">COMMUNITY</span></a>
   <a class="navCta" href="https://pump.fun/coin/9Eufcq8yqukb4A9eUTAXrRpzB7aKTdAuUnqe75ttpump" target="_blank" rel="noopener">Buy on pump.fun</a>
 </nav>
 
@@ -2227,6 +2421,56 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opac
   </div>
 </footer>
 
+<button class="pumpmas-launcher" id="pumpmasLauncher" type="button" aria-label="Discover $PUMPMAS — click to open the Christmas surprise" aria-haspopup="dialog" aria-controls="pumpmasDialog">
+  <span class="pumpmas-launcherIcon"><img src="assets/pumpmas-logo.png" alt="" width="69" height="69" loading="lazy" decoding="async"></span>
+  <span class="pumpmas-launcherCopy">
+    <span class="pumpmas-launcherKicker">A holiday surprise</span>
+    <span class="pumpmas-launcherName">$PUMPMAS</span>
+    <span class="pumpmas-launcherAction"><span aria-hidden="true">✦</span> CLICK ME <span class="pmArrow" aria-hidden="true">↗</span></span>
+  </span>
+  <span class="pumpmas-launcherSnow" aria-hidden="true">❄</span>
+</button>
+
+<dialog class="pumpmas-dialog" id="pumpmasDialog" aria-labelledby="pumpmasTitle" aria-describedby="pumpmasDescription">
+  <div class="pumpmas-card">
+    <button class="pumpmas-close" id="pumpmasClose" type="button" aria-label="Close $PUMPMAS invitation">&times;</button>
+
+    <div class="pm-scene" aria-hidden="true">
+      <div class="pm-aurora pm-aurora-one"></div>
+      <div class="pm-aurora pm-aurora-two"></div>
+      <div class="pm-moon"></div>
+      <div class="pm-stars">
+        <span style="left:8%;top:24%">✦</span><span style="left:20%;top:15%">·</span><span style="left:33%;top:28%">✧</span><span style="left:45%;top:13%">✦</span><span style="left:58%;top:21%">·</span><span style="left:68%;top:12%">✧</span><span style="left:82%;top:23%">✦</span><span style="left:93%;top:35%">·</span><span style="left:12%;top:44%">✧</span><span style="left:74%;top:39%">✦</span><span style="left:89%;top:53%">✧</span><span style="left:37%;top:44%">·</span><span style="left:56%;top:35%">✦</span><span style="left:27%;top:56%">✧</span>
+      </div>
+      <div class="pm-light-string"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="pm-mountain pm-mountain-back"></div>
+      <div class="pm-mountain pm-mountain-front"></div>
+      <div class="pm-pine pm-pine-left"></div>
+      <div class="pm-pine pm-pine-right"></div>
+      <span class="pm-flake pm-flake-a">❄</span><span class="pm-flake pm-flake-b">✦</span><span class="pm-flake pm-flake-c">❄</span><span class="pm-flake pm-flake-d">✧</span><span class="pm-flake pm-flake-e">❄</span>
+      <div class="pm-gift-pop">
+        <span class="pm-pop-spark pm-pop-spark-a">✦</span><span class="pm-pop-spark pm-pop-spark-b">✧</span><span class="pm-pop-spark pm-pop-spark-c">✦</span><span class="pm-pop-spark pm-pop-spark-d">✧</span>
+        <div class="pm-gift-logo"><img src="assets/pumpmas-logo.png" alt="" width="105" height="105" decoding="async"></div>
+        <div class="pm-gift-box"></div>
+        <div class="pm-gift-lid"></div>
+      </div>
+      <div class="pm-snowbank"></div>
+    </div>
+
+    <section class="pm-message">
+      <p class="pm-eyebrow"><span aria-hidden="true">✦</span> A LITTLE PRESENT FROM THE $PUMPKIN TEAM <span aria-hidden="true">✦</span></p>
+      <h2 class="pm-title" id="pumpmasTitle"><span class="pm-title-small">Wishing you a very</span><span class="pm-title-brand"><span class="pm-title-dollar">$</span>PUMPMAS!</span></h2>
+      <p class="pm-subtitle">OG coin. Same story, Different times.</p>
+      <div class="pm-copy" id="pumpmasDescription">
+        <p>Want to discover something similar to <strong>$PUMPKIN</strong>? Meet <strong>$PUMPMAS</strong>  same story, same origin, just a different season. One for Halloween, the other for Christmas. 🎃🎄</p>
+        <p>Click below to unwrap your present and discover more on the official website.</p>
+      </div>
+      <a class="pumpmas-cta" href="https://www.pumpmas-sol.fun/" target="_blank" rel="noopener noreferrer"><span class="pm-ctaSpark" aria-hidden="true">✦</span><span>CLICK TO UNWRAP</span><span class="pm-ctaArrow" aria-hidden="true">➜</span></a>
+      <p class="pm-footnote"><span class="pm-foot-snow" aria-hidden="true">❄</span> Your next big seasonal play <span class="pm-foot-snow" aria-hidden="true">❄</span></p>
+    </section>
+  </div>
+</dialog>
+
 <script>
 const sky=document.getElementById('sky');
 for(let i=0;i<72;i++){const s=document.createElement('i');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=(Math.random()*4)+'s';s.style.opacity=.1+Math.random()*.45;sky.appendChild(s)}
@@ -2253,6 +2497,24 @@ function tick(){
   set('navD',String(D).padStart(2,'0'));set('navH',H);set('navM',M);set('navS',S)
 }
 tick();setInterval(tick,1000);
+</script>
+<script>
+const pumpmasLauncher=document.getElementById('pumpmasLauncher');
+const pumpmasDialog=document.getElementById('pumpmasDialog');
+const pumpmasClose=document.getElementById('pumpmasClose');
+
+pumpmasLauncher.addEventListener('click',()=>pumpmasDialog.showModal());
+pumpmasClose.addEventListener('click',()=>pumpmasDialog.close());
+pumpmasDialog.addEventListener('click',event=>{
+  if(event.target===pumpmasDialog)pumpmasDialog.close();
+});
+pumpmasDialog.addEventListener('keydown',event=>{
+  if(event.key==='Escape'){
+    event.preventDefault();
+    pumpmasDialog.close();
+  }
+});
+pumpmasDialog.addEventListener('close',()=>pumpmasLauncher.focus());
 </script>
 <script>
 
